@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :forum_threads do
+  	# nested route inside forum_threads - keeps it neater
+  	resources :forum_posts 
+  	# you can add a module option above too - module :forum_threads
+  	# this is useful if you're running a forum inside of a larger application. 
+	end
 end
